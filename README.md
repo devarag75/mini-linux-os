@@ -1,1 +1,1 @@
-# mini-linux-os the 
+# mini-linux-os
