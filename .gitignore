@@ -1,0 +1,17 @@
+# Kernel build artifacts
+kernel/linux-6.6/
+kernel/bzImage
+*.o
+*.a
+*.ko
+*.cmd
+*.tmp
+*.mod
+*.symvers
+*.order
+
+# Archives
+*.tar.xz
+
+# ISO images
+*.iso
