@@ -1,0 +1,8 @@
+#!/bin/sh
+
+mount -t proc none /proc
+mount -t sysfs none /sys
+
+echo "Welcome to Mini Linux OS"
+exec /bin/bash
+
