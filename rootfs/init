@@ -1,19 +1,19 @@
 #!/bin/sh
 
+export PATH=/bin:/sbin
+
+echo "### USING UPDATED INIT ###"
+
 # Mount kernel filesystems
-mount -t proc proc /proc
-mount -t sysfs sysfs /sys
+/bin/busybox mount -t proc proc /proc
+/bin/busybox mount -t sysfs sysfs /sys
 
 echo "Bringing up network..."
 
-# Bring interface up
-ip link set eth0 up
-
-# Assign IP (QEMU NAT safe IP)
-ip addr add 10.0.2.15/24 dev eth0
-ip route add default via 10.0.2.2
+/bin/busybox ip link set eth0 up
+/bin/busybox udhcpc -i eth0
 
 echo "Network is up"
 
-# Start shell
 exec /bin/busybox sh
+
