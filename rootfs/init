@@ -1,19 +1,29 @@
 #!/bin/sh
 
+# Set PATH
 export PATH=/bin:/sbin
 
 echo "### USING UPDATED INIT ###"
 
-# Mount kernel filesystems
+# Mount essential filesystems
+/bin/busybox mount -t devtmpfs devtmpfs /dev
 /bin/busybox mount -t proc proc /proc
 /bin/busybox mount -t sysfs sysfs /sys
 
 echo "Bringing up network..."
 
+# Bring interface up
 /bin/busybox ip link set eth0 up
+
+# Start DHCP
 /bin/busybox udhcpc -i eth0
 
 echo "Network is up"
 
+echo "=================================="
+echo "   Welcome to mini-linux-os 🚀"
+echo "=================================="
+
+# Start shell
 exec /bin/busybox sh
 
